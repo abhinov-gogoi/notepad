@@ -13,7 +13,8 @@ import { timeout } from 'rxjs/operators';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  BASE_URL_LOCAL = "http://localhost:8009"
+  // BASE_URL_LOCAL = "http://localhost:8009"
+  BASE_URL_LOCAL = "https://notepad-spring.herokuapp.com";
   API_CREATE_UPDATE_PROJECT_DETAILS = "crtUpdtPrjctDtls"
   API_GET_PROJECT_DETAILS = "gtPrjctDtls"
   API_CREATE_UPDATE_SECTION_DETAILS = "crtUpdtSctnDtls"
@@ -75,7 +76,7 @@ export class SidebarComponent implements OnInit {
 
     // hit backend API
     this.http.get<any>(URL, { "headers": headers })
-      .pipe(timeout(2000))
+      .pipe(timeout(20000))
       .subscribe(resp => {
         if (resp === null || resp.STATUS !== "SUCCESS") {
           this.showToast("error", "Error", "Something went wrong")
