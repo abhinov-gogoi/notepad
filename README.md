@@ -31,14 +31,10 @@ Application is hosted here - https://abhinov-gogoi.github.io/notepad <br>
 Backend - is hosted on HEROKU - https://notepad-spring.herokuapp.com <br>
 
 ## Setup
-To run in your localhost - Clone into local and run project on tomcat server. If any issue check artifact is build properly.
+To run in your localhost - Clone into local and run backed as a maven project. Run the frontend as a separate Angular project
 <br>
-Check screenshots for tomcat configuration
-<br><br>
-To deploy on a server use FlyAway.war file.
+Angular versioning can be found here - https://github.com/abhinov-gogoi/notepad/blob/main/frontend/versioning.txt<br>
 
 ## Coming Up
-1. Form/Input Validation
-2. Better CSS/Frontend Styles
-3. Add a new flight 
-4. Show previous flight bookings
+1. Login/Signup
+2. Auto Save feature document
