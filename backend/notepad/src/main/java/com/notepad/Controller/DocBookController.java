@@ -35,8 +35,6 @@ public class DocBookController {
 
     /**
      * test API
-     *
-     * @return
      */
     @RequestMapping(value = WebHook.apiTest, method = RequestMethod.GET, produces = MediaType.TEXT_HTML_VALUE, headers = "Accept=application/json")
     public String apiTest() {
