@@ -8,4 +8,5 @@ public class WebHook {
     public static final String getSectionDetails = "gtSctnDtls";
     public static final String deleteDocbook = "dltDcbk";
     public static final String updateSectionSequence = "updtSctnSqunce";
+    public static final String apiTest = "test";
 }
