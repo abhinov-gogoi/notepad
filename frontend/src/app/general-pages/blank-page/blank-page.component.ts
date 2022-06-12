@@ -32,7 +32,8 @@ export class BlankPageComponent implements OnInit {
     private http: HttpClient,
     private toastr: ToastrService) { }
 
-  BASE_URL_LOCAL = "http://localhost:8009"
+  // BASE_URL_LOCAL = "http://localhost:8009"
+  BASE_URL_LOCAL = "https://notepad-spring.herokuapp.com";
   API_GET_SECTION_DETAILS = "gtSctnDtls"
   API_CREATE_UPDATE_SECTION_DETAILS = "crtUpdtSctnDtls"
   API_DELETE_DOCBOOK = "dltDcbk"

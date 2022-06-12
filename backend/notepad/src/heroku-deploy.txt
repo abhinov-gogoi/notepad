@@ -1,0 +1,15 @@
+cd into - > /notepad/backend/notepad$
+
+abhinov@msi:~/workspace/Repository/notepad/backend/notepad$ git init
+Initialized empty Git repository in /home/abhinov/workspace/Repository/notepad/backend/notepad/.git/
+
+abhinov@msi:~/workspace/Repository/notepad/backend/notepad$ heroku git:remote -a notepad-spring
+set git remote heroku to https://git.heroku.com/notepad-spring.git
+
+abhinov@msi:~/workspace/Repository/notepad/backend/notepad$ git add .
+
+abhinov@msi:~/workspace/Repository/notepad/backend/notepad$ git commit -am "make it better"
+
+abhinov@msi:~/workspace/Repository/notepad/backend/notepad$ git push heroku master
+
+
