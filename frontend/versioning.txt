@@ -36,3 +36,9 @@ Package                         Version
 @schematics/angular             12.0.0 (cli-only)
 rxjs                            6.6.7 (cli-only)
 typescript                      4.3.5 (cli-only)
+
+-----------------------------------------------------
+DEPLOY to gh pages
+
+notepad/frontend$ ng build --prod --base-href "https://abhinov-gogoi.github.io/notepad/"
+notepad/frontend$ npx angular-cli-ghpages --dir=dist/
