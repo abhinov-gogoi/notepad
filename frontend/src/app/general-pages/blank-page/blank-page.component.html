@@ -1,0 +1,212 @@
+<div class="page-header">
+    <h3 class="page-title">
+        <i class="page-title-icon {{JSON_DATA.icon}}"></i> {{JSON_DATA.name}}
+    </h3>
+    <nav aria-label="breadcrumb">
+
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"> <button (click)="openModal(editProjectModal,JSON_DATA)"
+                    class="btn btn-sm btn-rounded btn-gradient-dark" type="button"> <i class="mdi mdi-tooltip-edit"></i>
+                    Edit</button></li>
+            <li class="breadcrumb-item"> <button (click)="refresh()" class="btn btn-sm btn-rounded btn-gradient-primary"
+                    type="button"> <i class="mdi mdi-refresh"></i> Refresh</button></li>
+            <li class="breadcrumb-item"> <button (click)="downloadAsPDF()"
+                    class="btn btn-sm btn-rounded btn-gradient-success" type="button"> <i class="mdi mdi-file-pdf"></i>
+                    Export To Pdf</button></li>
+            <li class="breadcrumb-item"> <button (click)="openDeleteProjectModal(deleteProjectModalContent)"
+                    class="btn btn-sm btn-rounded btn-gradient-danger" type="button"> <i class="mdi mdi-delete"></i>
+                    Delete Project</button></li>
+        </ol>
+    </nav>
+</div>
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Description</h4>
+                <p class="card-description">{{JSON_DATA.description}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <ngb-accordion [destroyOnHide]="true" [closeOthers]="true" class="accordion-solid-header"
+                    *ngFor="let section of JSON_DATA.sections">
+                    <ngb-panel title="{{section.name}}">
+                        <ng-template ngbPanelContent>
+                            <input [(ngModel)]="section.name" [hidden]="!section.editSection" type="text"
+                                class="form-control" id="exampleInputUsername1" placeholder="Username">
+                            <angular-editor (change)="editorChange()" [hidden]="!section.editSection"
+                                id="{{section.id}}" [(ngModel)]="section.content" [config]="config"></angular-editor>
+                            <span [hidden]="section.editSection" [innerHTML]="section.content"></span>
+                            <div id="{{section._id}} #{{section._id}}">
+                                <button [hidden]="section.editSection"
+                                    class="btn btn-block btn-sm btn-rounded btn-gradient-light" type="button"
+                                    (click)="editSection(section)">Edit</button>
+                                <button [hidden]="!section.editSection"
+                                    class="btn btn-block btn-sm btn-rounded btn-gradient-danger" type="button"
+                                    (click)="openDeleteSectionModal(deleteSectionModalContent, section)">Delete this
+                                    Section</button>
+                                <button [hidden]="!section.editSection"
+                                    class="btn btn-block btn-sm btn-rounded btn-gradient-success" type="button"
+                                    (click)="saveSection(section)">Save</button>
+                            </div>
+                        </ng-template>
+                    </ngb-panel>
+                </ngb-accordion>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button (click)="openModalForSection(addNewSectionModalContent)"
+    class="btn btn-block btn-sm btn-rounded btn-gradient-primary" type="button"> <i
+        class="mdi mdi-book-open-page-variant"></i> Add new Section</button>
+
+
+<!-- Edit Project Modal starts -->
+<ng-template class="modal fade " #editProjectModal let-modal>
+    <div class="modal-content ">
+        <div class="modal-header ">
+            <h5 class="modal-title " id="exampleModalLabel ">Edit Project</h5>
+            <button type="button " class="close " data-dismiss="modal " aria-label="Close " (click)="modal.dismiss() ">
+                <span aria-hidden="true ">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body ">
+            <div class="form-group ">
+                <input [(ngModel)]="selectedProjectName " #editproject_name type="text "
+                    class="form-control form-control-lg " placeholder="Project Name ">
+            </div>
+            <div class="form-group">
+                <textarea [(ngModel)]="selectedProjectDescription " #editproject_description
+                    class="form-control form-control-lg " placeholder="Project Description "></textarea>
+            </div>
+            <div class="form-group ">
+                <input [(ngModel)]="selectedProjectIcon " #editproject_icon class="form-control form-control-lg "
+                    placeholder="Icon ">
+            </div>
+            <div class="card" [hidden]="JSON_DATA.sections.length===0">
+                <div class="card-body">
+                    <h4 class="card-title">Ordering</h4>
+                    <p class="card-description "><code>Drag and drop the sections to order their sequence</code></p>
+                    <div class="example-list" cdkDropList (cdkDropListDropped)="drop($event)">
+                        <div class="col-lg-12">
+                            <div class="example-box" *ngFor="let section of JSON_DATA.sections" cdkDrag>
+                                {{section.name}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit " class="btn btn-success " (click)="updateProject() ">Save</button>
+            <button type="button " class="btn btn-light " data-dismiss="modal " (click)="modal.close() ">Cancel</button>
+        </div>
+    </div>
+</ng-template>
+<!-- Modal Ends -->
+
+<!-- Modal starts -->
+<ng-template class="modal fade " #addNewSectionModalContent let-modal>
+    <div class="modal-content ">
+        <div class="modal-header ">
+            <h5 class="modal-title " id="addNewSectionModalLabel ">Create a new Section</h5>
+        </div>
+        <div class="modal-body ">
+            <div class="form-group ">
+                <input #addsection_name type="text " class="form-control form-control-lg " placeholder="Section Name ">
+            </div>
+        </div>
+        <div class="modal-footer ">
+            <button type="submit " class="btn btn-success " (click)="addNewSection(addsection_name.value) ">Add</button>
+            <button type="button " class="btn btn-light " data-dismiss="modal " (click)="modal.close() ">Cancel</button>
+        </div>
+    </div>
+</ng-template>
+<!-- Modal Ends -->
+
+<!-- Modal starts -->
+<ng-template class="modal fade" #deleteProjectModalContent let-modal>
+    <div class="modal-content">
+        <div class="modal-header ">
+            <h1 class="modal-title txt-centre " id="deleteProjectModalLabel ">Are You Sure?</h1>
+        </div>
+        <div class="modal-body ">
+            <div class="card ">
+                <div class="card-body">
+                    <h4 class="card-title "><code>Warning!</code></h4>
+                    <p class="card-description ">You are about to delete the entire project
+                        <code>{{selectedProjectName}}</code>. This action cannot be undone. Type <code>CONFIRM</code> in
+                        the box.
+                    </p>
+                    <input [(ngModel)]="CONFIRM" name="CONFIRM" type="text" class="form-control form-control-lg"
+                        placeholder="CONFIRM">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer ">
+            <button [disabled]="CONFIRM !== 'CONFIRM'" type="submit " class="btn btn-danger"
+                (click)="deleteDocBook(null, selectedProjectId)"> <i class="mdi mdi-delete"></i> Yes</button>
+            <button type="button " class="btn btn-light" data-dismiss="modal " (click)="modal.close() ">Cancel</button>
+        </div>
+    </div>
+</ng-template>
+<!-- Modal Ends -->
+
+<!-- Modal starts -->
+<ng-template class="modal fade " #deleteSectionModalContent let-modal>
+    <div class="modal-content ">
+        <div class="modal-header ">
+            <h1 class="modal-title txt-centre " id="deleteSectionModalLabel ">Delete this Section?</h1>
+        </div>
+        <div class="modal-body ">
+            <div class="card ">
+                <div class="card-body ">
+                    <h4 class="card-title "><code>Warning!</code></h4>
+                    <p class="card-description ">You are about to delete the entire section
+                        <code>{{selectedSectionName}}</code>. This action cannot be undone. Type <code>CONFIRM</code> in
+                        the box.
+                    </p>
+                    <input [(ngModel)]="CONFIRM" name="CONFIRM" type="text" class="form-control form-control-lg"
+                        placeholder="CONFIRM">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer ">
+            <button [disabled]="CONFIRM !=='CONFIRM'" type="submit " class="btn btn-danger "
+                (click)="deleteDocBook(selectedSectionId, null)"> <i class="mdi mdi-delete"></i> Yes</button>
+            <button type="button " class="btn btn-light " data-dismiss="modal " (click)="modal.close() ">Cancel</button>
+        </div>
+    </div>
+</ng-template>
+<!-- Modal Ends -->
+
+<div [hidden]="true" class="row" id='projectInPDF' #projectInPDF>
+    <h1>{{JSON_DATA.name}}</h1>
+    <p>{{JSON_DATA.description}}</p>
+
+    <div class="col-lg-12 grid-margin stretch-card" *ngFor="let section of JSON_DATA.sections">
+        <div class="card">
+            <div class="card-body">
+                <hr>
+                <h4 class="card-title">{{section.name}}</h4>
+                <span [innerHTML]="section.content"></span>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <hr>
+        <div class="d-sm-flex justify-content-center justify-content-sm-between py-2">
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © notepad.co.in
+                2022</span>
+        </div>
+    </footer>
+</div>
