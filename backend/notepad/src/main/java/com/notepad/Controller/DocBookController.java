@@ -63,9 +63,9 @@ public class DocBookController {
     /**
      * @param rqst_map {
      *                 "id" : "fh387f3h3n9q8d.c2c2bc",
-     *                 "name": "UHES",
+     *                 "name": "Angular",
      *                 "sequence" : 2
-     *                 "description": "uhes desc",
+     *                 "description": "Angular is a JS Framework",
      *                 "icon": "mdi mdi-application",
      *                 }
      *
@@ -86,14 +86,14 @@ public class DocBookController {
      *                 </tr>
      *                 <tr>
      *                 <td>name</td>
-     *                 <td>UHES</td>
+     *                 <td>Angular</td>
      *                 <td>String</td>
      *                 <td>Mandatory</td>
      *                 <td>Name of the project</td>
      *                 </tr>
      *                 <tr>
      *                 <td>description</td>
-     *                 <td>uhes is smart meter project</td>
+     *                 <td>Angular is JS Framework</td>
      *                 <td>String</td>
      *                 <td>Optional</td>
      *                 <td>description for the project</td></td>
@@ -531,8 +531,8 @@ public class DocBookController {
     /**
      * @param rqst_map {
      *                 "id" : "fh387f3h3n9q8d.c2c2bc",
-     *                 "name": "UHES",
-     *                 "description": "uhes desc",
+     *                 "name": "Angular",
+     *                 "description": "angular is a ja framework",
      *                 "icon": "mdi mdi-application",
      *                 }
      *
@@ -553,14 +553,14 @@ public class DocBookController {
      *                 </tr>
      *                 <tr>
      *                 <td>name</td>
-     *                 <td>UHES</td>
+     *                 <td>Angular</td>
      *                 <td>String</td>
      *                 <td>Mandatory</td>
      *                 <td>Name of the project</td>
      *                 </tr>
      *                 <tr>
      *                 <td>description</td>
-     *                 <td>uhes is smart meter project</td>
+     *                 <td>Angular is a JS Framework</td>
      *                 <td>String</td>
      *                 <td>Optional</td>
      *                 <td>description for the project</td></td>
