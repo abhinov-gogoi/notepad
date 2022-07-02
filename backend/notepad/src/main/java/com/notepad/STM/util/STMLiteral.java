@@ -51,4 +51,13 @@ public final class STMLiteral {
     public static final String MONGODB_CONNECTION_SUCCESSFUL = "Successfully connected to mongodb";
     public static final String database = "database";
     public static final String MONGO_DATABASE_NULL = "Kindly provide a database name";
+    public static final String DATABASES = "DATABASES";
+    public static final String mysql_url = "mysql_url";
+    public static final String username = "username";
+    public static final String password = "password";
+    public static final String MYSQL_URL_NULL = "Kindly provide mysql url";
+    public static final String MYSQL_USERNAME_NULL = "Kindly provide mysql username";
+    public static final String MYSQL_PASSWORD_NULL = "Kindly provide mysql password";
+    public static final String MYSQL_CONNECTION_SUCCESSFUL = "Successfully connected to mysql";
+    public static final String MYSQL_CONNECTION_FAILED = "Could not connect to MySQL ";
 }

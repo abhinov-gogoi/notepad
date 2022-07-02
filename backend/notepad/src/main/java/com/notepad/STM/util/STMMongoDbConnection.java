@@ -47,12 +47,7 @@ public class STMMongoDbConnection {
      * Get mongo client
      */
     public static MongoClient mongoClientURI(String uri) {
-        try {
-            return MongoClients.create(uri);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
+        return MongoClients.create(uri);
     }
 
     /**
