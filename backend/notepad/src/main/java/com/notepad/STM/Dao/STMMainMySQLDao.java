@@ -30,7 +30,7 @@ public class STMMainMySQLDao {
      */
     public boolean testMySQLConnection(String url, String username, String password) throws SQLException {
         // Open a connection
-        try (Connection conn = DriverManager.getConnection(url, username, password)) {
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://"+url, username, password)) {
              return conn.isValid(20000);
         } catch (SQLException e) {
             throw new SQLException(e);
