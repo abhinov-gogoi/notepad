@@ -3,6 +3,7 @@ package com.notepad.STM.Controller;
 import com.mongodb.Block;
 import com.mongodb.client.MongoClient;
 import com.notepad.NotePad.util.Literal;
+import com.notepad.STM.Dao.STMMainMongoDao;
 import com.notepad.STM.Services.STMApiGatwayService;
 import com.notepad.STM.Services.STMMongoServices;
 import com.notepad.STM.Services.STMMySQLService;
@@ -183,6 +184,7 @@ public class STMController {
             List<String> dbs = new ArrayList<>();
             STMMongoDbConnection.mongoClientURI(mongodb_uri).listDatabaseNames().forEach(dbs::add);
             ret_map.put(STMLiteral.STATUS, STMLiteral.SUCCESS);
+            ret_map.put(STMLiteral.MESSAGE, STMLiteral.MONGODB_CONNECTION_SUCCESSFUL);
             ret_map.put(STMLiteral.DATABASES, dbs);
         } catch (Exception e) {
             ret_map.put(STMLiteral.STATUS, STMLiteral.ERROR);
@@ -328,6 +330,31 @@ public class STMController {
             return ret_map;
         }
 
+    }
+
+
+    /**
+     * gets the tables of mysql database
+     *
+     * @return
+     */
+    @RequestMapping(value = "mysqlTables", method = RequestMethod.GET)
+    public @ResponseBody Map<String, Object> getMySQLTables() {
+        Map<String, Object> ret_map = new HashMap<>();
+        try {
+            List<String> result = STMMySQLService.getInstance()
+                    .getTables(
+                            "jdbc:mysql://remotemysql.com/03ZeLcEdG3",
+                            "03ZeLcEdG3",
+                            "TGuPoOIlq9");
+            ret_map.put(STMLiteral.STATUS, STMLiteral.SUCCESS);
+            ret_map.put(STMLiteral.DATA, result);
+        } catch (Exception e) {
+            ret_map.put(STMLiteral.STATUS, STMLiteral.ERROR);
+            ret_map.put(STMLiteral.MESSAGE, e.getMessage());
+            return ret_map;
+        }
+        return ret_map;
     }
 
 }

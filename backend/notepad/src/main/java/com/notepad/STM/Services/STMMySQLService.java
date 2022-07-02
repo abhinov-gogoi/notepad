@@ -6,6 +6,9 @@ import com.notepad.STM.Dao.STMMainMySQLDao;
 import com.notepad.STM.util.STMLiteral;
 
 import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class STMMySQLService {
 
@@ -45,6 +48,19 @@ public class STMMySQLService {
         } catch (Exception e) {
             throw new Exception(e);
         }
+    }
+
+    public List<String> getTables(String url, String username, String password) {
+        List<String> tables = new ArrayList<>();
+        List<Map<String, Object>> list_map = executeRawQuery("show tables", url, username, password);
+        list_map.forEach(map ->{
+            map.values().forEach(value -> tables.add(value.toString()));
+        });
+        return tables;
+    }
+
+    public List<Map<String, Object>> executeRawQuery(String sql, String url, String username, String password) {
+        return dao_mysql.executeRawQuery(sql, url, username, password);
     }
 }
 

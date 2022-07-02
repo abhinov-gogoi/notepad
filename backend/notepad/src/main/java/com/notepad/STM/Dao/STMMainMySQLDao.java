@@ -1,8 +1,11 @@
 package com.notepad.STM.Dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import com.google.gson.Gson;
+import com.notepad.STM.util.STMUtility;
+
+import java.sql.*;
+import java.util.List;
+import java.util.Map;
 
 public class STMMainMySQLDao {
 
@@ -30,10 +33,25 @@ public class STMMainMySQLDao {
      */
     public boolean testMySQLConnection(String url, String username, String password) throws SQLException {
         // Open a connection
-        try (Connection conn = DriverManager.getConnection("jdbc:mysql://"+url, username, password)) {
-             return conn.isValid(20000);
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://" + url, username, password)) {
+            return conn.isValid(20000);
         } catch (SQLException e) {
             throw new SQLException(e);
         }
     }
+
+
+    public List<Map<String, Object>> executeRawQuery(String sql, String url, String username, String password) {
+        // Open a connection
+        try (Connection conn = DriverManager.getConnection(url, username, password);
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            // Extract data from result set
+            return STMUtility.resultSetToArrayList(rs);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
