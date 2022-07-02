@@ -1,4 +1,4 @@
-package com.notepad.Interceptor;
+package com.notepad.NotePad.Interceptor;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

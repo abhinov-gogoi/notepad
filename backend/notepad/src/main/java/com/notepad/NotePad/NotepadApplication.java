@@ -1,4 +1,4 @@
-package com.notepad;
+package com.notepad.NotePad;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

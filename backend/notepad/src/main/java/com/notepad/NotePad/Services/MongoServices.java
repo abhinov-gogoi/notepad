@@ -1,10 +1,10 @@
 
-package com.notepad.Services;
+package com.notepad.NotePad.Services;
 
-import com.notepad.Dao.MainMongoDao;
-import com.notepad.util.Literal;
-import com.notepad.util.MongoDBConnectionInfo;
-import com.notepad.util.Utility;
+import com.notepad.NotePad.Dao.MainMongoDao;
+import com.notepad.NotePad.util.Literal;
+import com.notepad.NotePad.util.MongoDBConnectionInfo;
+import com.notepad.NotePad.util.Utility;
 import org.bson.Document;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.query.BasicQuery;

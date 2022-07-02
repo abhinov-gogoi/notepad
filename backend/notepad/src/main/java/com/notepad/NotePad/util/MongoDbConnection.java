@@ -1,4 +1,4 @@
-package com.notepad.util;
+package com.notepad.NotePad.util;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;

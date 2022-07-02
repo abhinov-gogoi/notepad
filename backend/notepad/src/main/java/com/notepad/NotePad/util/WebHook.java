@@ -1,4 +1,4 @@
-package com.notepad.util;
+package com.notepad.NotePad.util;
 
 public class WebHook {
     public static final String mongoTest = "mongoTest";

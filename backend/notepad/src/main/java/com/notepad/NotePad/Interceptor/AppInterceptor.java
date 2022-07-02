@@ -1,4 +1,4 @@
-package com.notepad.Interceptor;
+package com.notepad.NotePad.Interceptor;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;

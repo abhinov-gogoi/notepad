@@ -1,10 +1,10 @@
-package com.notepad.Controller;
+package com.notepad.NotePad.Controller;
 
-import com.notepad.Services.ApiGatwayService;
-import com.notepad.Services.MongoServices;
-import com.notepad.util.Literal;
-import com.notepad.util.Utility;
-import com.notepad.util.WebHook;
+import com.notepad.NotePad.Services.ApiGatwayService;
+import com.notepad.NotePad.Services.MongoServices;
+import com.notepad.NotePad.util.Literal;
+import com.notepad.NotePad.util.Utility;
+import com.notepad.NotePad.util.WebHook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;

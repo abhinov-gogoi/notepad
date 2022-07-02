@@ -1,6 +1,6 @@
-package com.notepad.Services;
+package com.notepad.NotePad.Services;
 
-import com.notepad.util.Literal;
+import com.notepad.NotePad.util.Literal;
 
 import java.util.HashMap;
 import java.util.Map;

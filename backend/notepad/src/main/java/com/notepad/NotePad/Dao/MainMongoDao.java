@@ -1,10 +1,10 @@
-package com.notepad.Dao;
+package com.notepad.NotePad.Dao;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.notepad.util.Literal;
-import com.notepad.util.MongoDBConnectionInfo;
-import com.notepad.util.MongoDbConnection;
-import com.notepad.util.Utility;
+import com.notepad.NotePad.util.Literal;
+import com.notepad.NotePad.util.MongoDBConnectionInfo;
+import com.notepad.NotePad.util.MongoDbConnection;
+import com.notepad.NotePad.util.Utility;
 import com.mongodb.DuplicateKeyException;
 import com.mongodb.client.result.UpdateResult;
 import org.bson.Document;
